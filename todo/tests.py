@@ -5,6 +5,8 @@ from todo.models import Task
 
 
 # Create your tests here.
+
+
 class SampleTestCase(TestCase):
     def test_sample1(self):
         self.assertEqual(1 + 2, 3)
@@ -48,9 +50,9 @@ class TaskModelTestCase(TestCase):
             task.is_overdue(timezone.make_aware(current)))
 
     def test_is_overdue_none(self):
-        due = None
+        due = timezone.make_aware(datetime(2023, 6, 30, 23, 59, 59))
         current = timezone.make_aware(datetime(2023, 7, 1, 0, 0, 0))
-        task = Task(title="task1",due_at=due)
+        task = Task(title="task1")
         task.save()
 
         self.assertFalse(
